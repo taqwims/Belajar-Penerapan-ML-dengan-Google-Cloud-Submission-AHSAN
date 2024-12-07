@@ -57,7 +57,7 @@ async function postPredictHistoriesHandler(request, h) {
 const {SecretManagerServiceClient} = require('@google-cloud/secret-manager');
 const client = new SecretManagerServiceClient();
 
-async function accessSecret(name ='submission', version='latest') {
+async function accessSecret(name ='penyimpanan123', version='latest') {
   try {
     if (!process.env.GOOGLE_PROJECT_ID) {
       throw 'Please set the GOOGLE_PROJECT_ID environment variable.';
