@@ -1,5 +1,5 @@
 const { Firestore } = require('@google-cloud/firestore');
-const accessSecret = require ('../server/accessSecret');
+const accessSecret = require ('../server/handler/accessSecret');
 
 async function getAllData() {
     const db = new Firestore();
