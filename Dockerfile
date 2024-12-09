@@ -1,8 +1,25 @@
-FROM node:18.17.1
+# Gunakan base image Node.js
+FROM node:18-slim
+
+# Tetapkan direktori kerja
 WORKDIR /app
-ENV PORT 3000
-ENV MODEL_URL 'https://storage.googleapis.com/model-storage-submission/model-in-prod/model.json'
+
+# Salin file package.json dan package-lock.json (jika ada)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install --production
+
+# Salin seluruh file aplikasi
 COPY . .
-RUN npm install
+
+# Tetapkan environment variables (ganti dengan nilai yang sesuai)
+ENV GOOGLE_CLOUD_PROJECT="submissionmlgc-ahsan"
+ENV MODEL_URL="https://storage.googleapis.com/penyimpanan123/model.json" 
+# ... environment variables lainnya ...
+
+# Expose port aplikasi (ganti sesuai port aplikasi Hapi.js Anda)
 EXPOSE 3000
-CMD [ "npm", "run", "start"]
+
+# Jalankan aplikasi menggunakan Node.js
+CMD ["node", "server.js"]
