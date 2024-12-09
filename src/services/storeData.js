@@ -4,7 +4,7 @@ const accessSecret = require ('../server/handler/accessSecret');
 async function storeData(id, data) {
   const db = new Firestore();
  
-  const predictCollection = accessSecret.db.collection('predictions');
+  const predictCollection = db.collection('predictions');
   return predictCollection.doc(id).set(data);
 }
  
